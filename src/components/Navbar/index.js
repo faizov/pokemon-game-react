@@ -5,7 +5,7 @@ const Navbar = ({handleOpen, open}) => {
     return (
         <nav id={s.navbar}>
             <div className={cn(s.navWrapper)}>
-                <p class={s.brand}>
+                <p className={s.brand}>
                 LOGO
                 </p>
                 <a onClick={handleOpen} className={cn(s.menuButton, {[s.active]: open})}>

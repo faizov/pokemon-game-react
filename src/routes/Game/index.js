@@ -1,9 +1,12 @@
 
-const Game = () => {
-    
+const Game = ({onChangePage}) => {
+    const handleClickButton = () => {
+        onChangePage && onChangePage();
+      }
     return (
         <>
-            Pokemon Game!
+            <p>Pokemon Game!</p>
+            <button onClick={handleClickButton}>На главную</button>
         </>
     )
 }
