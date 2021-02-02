@@ -3,15 +3,15 @@ import { useState } from 'react';
 import Menu from '../Menu/';
 import Navbar from '../Navbar/';
 
-const MenuNavbar = () => {
-    const [open, setOpen] = useState(false)
+const MenuNavbar = ({pages}) => {
+    const [isOpen, setOpen] = useState(false)
     const handleOpen = () => {
-        setOpen(!open)
+        setOpen(!isOpen)
     }
     return (
         <>
-            <Menu open={open}/>
-            <Navbar open={open} handleOpen={handleOpen}/>
+            <Menu open={isOpen} pages={pages}/>
+            <Navbar open={isOpen} handleOpen={handleOpen}/>
         </>
     )
 }

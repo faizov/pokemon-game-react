@@ -8,9 +8,9 @@ const Navbar = ({handleOpen, open}) => {
                 <p className={s.brand}>
                 LOGO
                 </p>
-                <a onClick={handleOpen} className={cn(s.menuButton, {[s.active]: open})}>
+                <span onClick={handleOpen} className={cn(s.menuButton, {[s.active]: open})}>
                     <span />
-                </a>
+                </span>
             </div>
         </nav>
     )

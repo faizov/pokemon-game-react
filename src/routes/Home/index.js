@@ -144,7 +144,7 @@ const POKEMONS = [
   }
 ]
 
-function HomePage({onChangePage}) {
+function HomePage({onChangePage, pages}) {
 
   const handleClickButton = () => {
     onChangePage && onChangePage();
@@ -152,7 +152,7 @@ function HomePage({onChangePage}) {
 
   return (
     <>
-      <MenuNavbar />
+      <MenuNavbar pages={pages}/>
       <Header 
         title={'Pokemon game'} 
         descr={'This is Description!'}
