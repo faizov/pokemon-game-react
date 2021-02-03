@@ -46,6 +46,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  opacity: 0;
+  z-index: -1;
 }
 
 .menuContainer::before,
@@ -194,7 +196,7 @@
     }
   }
   
-  .menu-container > .overlay {
+  .menuСontainer > .overlay {
     animation: overlay-slide-out 300ms forwards;
   }
   
