@@ -11,7 +11,7 @@ const MenuNavbar = ({bgActive}) => {
     }
     return (
         <>
-            <Menu isOpen={isOpen}/>
+            <Menu isOpen={isOpen} handleOpen={handleOpen}/>
             <Navbar isOpen={isOpen} bgActive={bgActive} handleOpen={handleOpen}/>
         </>
     )

@@ -152,7 +152,6 @@ function HomePage({onChangePage}) {
 
   return (
     <>
-      <MenuNavbar />
       <Header 
         title={'Pokemon game'} 
         descr={'This is Description!'}
@@ -204,7 +203,6 @@ function HomePage({onChangePage}) {
         </p>
       </Layout>
 
-      <Footer />
     </>
   );
 }
