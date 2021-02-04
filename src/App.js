@@ -23,9 +23,7 @@ const App = () => {
   return (
       <Switch>
 
-        <Route path="/404" render={() => (
-          <h1>test</h1>
-        )} />
+        <Route path="/404" component={NotFound} />
 
         <Route>
           <>

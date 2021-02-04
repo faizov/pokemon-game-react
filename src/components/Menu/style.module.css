@@ -154,13 +154,14 @@
   content: ' »';
   font-size: 2.5rem;
   color: transparent;
-  transition: color 200ms;
 }
 
 .menuContainer ul li a:hover::after {
   content: ' »';
-  color: #f300b4;
+  color: #007ef3;
 }
+
+
 
 .menuContainer a,
 .menuContainer a:visited {
@@ -169,7 +170,8 @@
 
 .menuContainer a:hover,
 .menuContainer a:active {
-  color: #f300b4;
+  color: #007ef3;
+  background: #fafafa;
 }
 
 @media only screen and (max-width: 649px) {

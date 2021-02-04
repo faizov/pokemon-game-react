@@ -2,6 +2,8 @@ import { useHistory } from 'react-router-dom'
 
 import s from './style.module.css';
 
+import icon from '../../assets/icon-pikachu.png'
+
 const Header = ({title, descr}) => {
     const history = useHistory();
     const handleClick = () => {
@@ -18,7 +20,7 @@ const Header = ({title, descr}) => {
                 <h1>{title}</h1>
                 <p>{descr}</p>
 
-                <button onClick={handleClick}>Start game</button>
+                <button onClick={handleClick}>Start game <i><img width="25" src={icon} alt=""/></i></button>
             </div>
         </header>
     )

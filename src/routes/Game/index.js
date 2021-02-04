@@ -138,34 +138,48 @@ const POKEMONS = [
     }
   ]
 
-const Game = ({}) => {
-    const [isActive, setActive] = useState(false)
-    const [pokemons, setPokemons] = useState(POKEMONS)
-    const handleClick = () => {
-        setActive(!isActive)
-        const newList = [];
-        const active = false;
-        newList.push({...pokemons, active})
-        console.log(newList)
-    }
-    return (
-        <>
-            <div className={s.flex}>
-            {pokemons.map((item) => 
-                <PokemonCard
-                    key={item.id} 
-                    name={item.name} 
-                    id={item.id} 
-                    type={item.type}
-                    values={item.values}
-                    img={item.img}
-                    handleClick={handleClick}
-                    isActive={isActive}
-                />
-            )}
-            </div>
-        </>
-    )
+const Game = () => {
+  const [pokemons, setPokemons] = useState(POKEMONS)
+
+  const handleClickCard = (id) => {
+    setPokemons((pokemons => {
+      const index = pokemons.findIndex((el) => el.id === id);
+      console.log(index)
+
+      const oldItems = pokemons[index];
+      console.log(oldItems)
+
+      const newItem = {...oldItems, isActive: !oldItems.isActive}
+      console.log(newItem)
+
+      const newArray = [
+        ...pokemons.slice(0, index),
+        newItem,
+        ...pokemons.slice(index + 1)
+      ];
+      console.log(newArray)
+
+      return newArray
+    }))
+    
+  }
+
+  return (
+    <div className={s.flex}>
+      {pokemons.map((item) => 
+          <PokemonCard
+              key={item.id} 
+              name={item.name} 
+              id={item.id} 
+              type={item.type}
+              values={item.values}
+              img={item.img}
+              handleClickCard={handleClickCard}
+              isActive={item.isActive}
+          />
+      )}
+    </div>
+  )
 }
 
 export default Game;
