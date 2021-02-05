@@ -46,6 +46,8 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  opacity: 0;
+  z-index: -1;
 }
 
 .menuContainer::before,
@@ -152,13 +154,14 @@
   content: ' »';
   font-size: 2.5rem;
   color: transparent;
-  transition: color 200ms;
 }
 
 .menuContainer ul li a:hover::after {
   content: ' »';
-  color: #f300b4;
+  color: #007ef3;
 }
+
+
 
 .menuContainer a,
 .menuContainer a:visited {
@@ -167,7 +170,8 @@
 
 .menuContainer a:hover,
 .menuContainer a:active {
-  color: #f300b4;
+  color: #007ef3;
+  background: #fafafa;
 }
 
 @media only screen and (max-width: 649px) {
@@ -194,7 +198,7 @@
     }
   }
   
-  .menu-container > .overlay {
+  .menuСontainer > .overlay {
     animation: overlay-slide-out 300ms forwards;
   }
   

@@ -3,15 +3,16 @@ import { useState } from 'react';
 import Menu from '../Menu/';
 import Navbar from '../Navbar/';
 
-const MenuNavbar = ({pages}) => {
-    const [isOpen, setOpen] = useState(false)
+const MenuNavbar = ({bgActive}) => {
+    const [isOpen, setOpen] = useState(null)
+    
     const handleOpen = () => {
-        setOpen(!isOpen)
+        setOpen(prevState => !prevState)
     }
     return (
         <>
-            <Menu open={isOpen} pages={pages}/>
-            <Navbar open={isOpen} handleOpen={handleOpen}/>
+            <Menu isOpen={isOpen} handleOpen={handleOpen}/>
+            <Navbar isOpen={isOpen} bgActive={bgActive} handleOpen={handleOpen}/>
         </>
     )
 }

@@ -1,9 +1,7 @@
 // components
 import Header from '../../components/Header/'
 import Layout from '../../components/Layout/'
-import Footer from '../../components/Footer/'
 import PokemonCard from '../../components/PokemonCard/'
-import MenuNavbar from '../../components/MenuNavbar/'
 
 import s from './style.module.css'
 
@@ -144,7 +142,7 @@ const POKEMONS = [
   }
 ]
 
-function HomePage({onChangePage, pages}) {
+function HomePage({onChangePage}) {
 
   const handleClickButton = () => {
     onChangePage && onChangePage();
@@ -152,7 +150,6 @@ function HomePage({onChangePage, pages}) {
 
   return (
     <>
-      <MenuNavbar pages={pages}/>
       <Header 
         title={'Pokemon game'} 
         descr={'This is Description!'}
@@ -204,7 +201,6 @@ function HomePage({onChangePage, pages}) {
         </p>
       </Layout>
 
-      <Footer />
     </>
   );
 }
