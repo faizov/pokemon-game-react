@@ -143,23 +143,7 @@ const Game = () => {
 
   const handleClickCard = (id) => {
     setPokemons((pokemons => {
-      const index = pokemons.findIndex((el) => el.id === id);
-      console.log(index)
-
-      const oldItems = pokemons[index];
-      console.log(oldItems)
-
-      const newItem = {...oldItems, isActive: !oldItems.isActive}
-      console.log(newItem)
-
-      const newArray = [
-        ...pokemons.slice(0, index),
-        newItem,
-        ...pokemons.slice(index + 1)
-      ];
-      console.log(newArray)
-
-      return newArray
+      return pokemons.map(item => item.id === id ? ({ ...item, isActive: !item.isActive }) : item)
     }))
     
   }
