@@ -13,20 +13,42 @@ const Game = () => {
     database.ref('pokemons').once('value', (snapshot) => {
       setPokemons(snapshot.val())
     })
-  }, [pokemons])
+  }, [])
 
   const handleAddCard = () => {
-    setPokemons(prevState => {
-      return Object.entries(prevState).reduce((acc,item) => {
-        const pokemon = item[1];
-        var updates = {};
-        const newPostKey = database.ref().child('pokemons').push().key;
-        updates["/pokemons/" + newPostKey] = pokemon;
-        return database.ref().update(updates);
+      const data = {
+        "abilities" : [ "intimidate", "shed-skin", "unnerve" ],
+        "base_experience" : 157,
+        "height" : 35,
+        "id" : 24,
+        "img" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
+        "name" : "arbok",
+        "stats" : {
+          "attack" : 95,
+          "defense" : 69,
+          "hp" : 60,
+          "special-attack" : 65,
+          "special-defense" : 79,
+          "speed" : 80
+        },
+        "type" : "poison",
+        "values" : {
+          "bottom" : "A",
+          "left" : "A",
+          "right" : 9,
+          "top" : 5
+        }
+    }
+
+    const newKey = database.ref().child('pokemons').push().key;
+    database.ref('pokemons/' + newKey).set(data);
+
+    database.ref('pokemons').once('value', (snapshot) => {
+      setPokemons(snapshot.val())
+    })
+  }
         
-      }, {});
-    });
-  };
+
   
   const handleClickCard = (id) => {
     setPokemons(prevState => {
