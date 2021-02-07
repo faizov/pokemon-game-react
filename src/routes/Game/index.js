@@ -13,16 +13,17 @@ const Game = () => {
     database.ref('pokemons').once('value', (snapshot) => {
       setPokemons(snapshot.val())
     })
-  }, [])
+  }, [pokemons])
 
   const handleAddCard = () => {
     setPokemons(prevState => {
       return Object.entries(prevState).reduce((acc,item) => {
         const pokemon = item[1];
-        const newKey = database.ref().child('pokemons').push().key;
-        return database.ref('pokemons/' + newKey).set({
-          ...pokemon,
-        });
+        var updates = {};
+        const newPostKey = database.ref().child('pokemons').push().key;
+        updates["/pokemons/" + newPostKey] = pokemon;
+        return database.ref().update(updates);
+        
       }, {});
     });
   };
