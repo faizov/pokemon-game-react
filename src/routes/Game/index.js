@@ -10,7 +10,7 @@ const Game = () => {
   const [pokemons, setPokemons] = useState({});
 
   useEffect(() => {
-    database.ref('pokemons').once('value', (snapshot) => {
+    database.ref('pokemons').on('value', (snapshot) => {
       setPokemons(snapshot.val())
     })
   }, [])
@@ -43,9 +43,6 @@ const Game = () => {
     const newKey = database.ref().child('pokemons').push().key;
     database.ref('pokemons/' + newKey).set(data);
 
-    database.ref('pokemons').once('value', (snapshot) => {
-      setPokemons(snapshot.val())
-    })
   }
         
 
