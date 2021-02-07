@@ -5,7 +5,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import cn from 'classnames'
+import cn from 'classnames';
 
 import HomePage from './routes/Home/'
 import GamePage from './routes/Game/'
