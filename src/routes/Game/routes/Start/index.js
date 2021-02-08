@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import database from '../../service/firebase';
+import database from '../../../../service/firebase';
 
 import s from './style.module.css';
-import PokemonCard from '../../components/PokemonCard/';
+import PokemonCard from '../../../../components/PokemonCard';
 
 
 
@@ -70,21 +70,23 @@ const Game = () => {
 
   return (
     <>
-    <button onClick={handleAddCard}>Add pokemon!</button>
-    <div className={s.flex}>
-      {Object.entries(pokemons).map(([key, {name, id, type, values, img, isActive}]) => 
-          <PokemonCard
-              key={key} 
-              name={name} 
-              id={id} 
-              type={type}
-              values={values}
-              img={img}
-              handleClickCard={handleClickCard}
-              isActive={isActive}
-          />
-      )}
-    </div>
+      <button onClick={handleAddCard}>Add pokemon!</button>
+      <div className={s.flex}>
+        {Object.entries(pokemons).map(([key, {name, id, type, values, img, isActive, minimize, className}]) => 
+            <PokemonCard
+                key={key} 
+                name={name} 
+                id={id} 
+                type={type}
+                values={values}
+                img={img}
+                handleClickCard={handleClickCard}
+                isActive={true}
+                minimize={minimize}
+                className={className}
+            />
+        )}
+      </div>
     </>
   )
 }

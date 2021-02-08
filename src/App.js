@@ -8,7 +8,7 @@ import {
 import cn from 'classnames';
 
 import HomePage from './routes/Home/'
-import GamePage from './routes/Game/'
+import GamePage from '../src/routes/Game/routes/Start/'
 import AboutPage from './routes/About/'
 import ContactPage from './routes/Contact/'
 import NotFound from './routes/NotFound/'
