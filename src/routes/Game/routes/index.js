@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
     useRouteMatch,
     Switch,
@@ -12,9 +13,14 @@ import {PokemonContext} from '../../../context/pokemonContext'
 
 const GamePage = () => {
     const match = useRouteMatch();
+    const [pokemon, setPokemon] = useState([])
+    const handleClick = (val) => {
+        setPokemon(val);
+    };
     return (
         <PokemonContext.Provider value={{
-            pokamon: [],
+            pokemon,
+            select: handleClick
         }}>
             <Switch>
                 <Route path={`${match.path}/`} exact component={StartPage} />

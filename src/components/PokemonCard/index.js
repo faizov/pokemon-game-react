@@ -1,13 +1,18 @@
+import React, { useState } from 'react'
+
 import cn from 'classnames'
 import s from './style.module.css';
 
-const PokemonCard = ({name, id, type, values, img, handleClickCard, isActive, minimize, className}) => {
-    
+const PokemonCard = ({name, id, type, values, img, handleClickCard, isActive, minimize, className, isSelected}) => {
+    // const [isSelected, setSelected] = useState(false)
+    console.log('minimize: ', minimize)
+    console.log('className: ', className)
     const handleCkickPokemon= () => {
         handleClickCard && handleClickCard(id);
+        // setSelected(!isSelected)
     }
     return (
-        <div onClick={handleCkickPokemon} className={cn(className, s.pokemonCard, {[s.active]: isActive})}>
+        <div onClick={handleCkickPokemon} className={cn(className, s.pokemonCard, {[s.active]: isActive, [s.selected]: isSelected})}>
             <div className={s.cardFront}>
                 <div className={cn(s.wrap, s.front)}>
                     <div className={cn(s.pokemon, s[type])}>
