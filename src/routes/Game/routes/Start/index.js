@@ -6,36 +6,12 @@ import PokemonCard from '../../../../components/PokemonCard';
 import { FireBaseContext } from '../../../../context/firebaseContext';
 import { PokemonContext } from '../../../../context/pokemonContext';
 
-const DATA = {
-  "abilities" : [ "intimidate", "shed-skin", "unnerve" ],
-  "base_experience" : 157,
-  "height" : 35,
-  "id" : 24,
-  "img" : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png",
-  "name" : "arbok",
-  "stats" : {
-    "attack" : 95,
-    "defense" : 69,
-    "hp" : 60,
-    "special-attack" : 65,
-    "special-defense" : 79,
-    "speed" : 80
-  },
-  "type" : "poison",
-  "values" : {
-    "bottom" : "A",
-    "left" : "A",
-    "right" : 9,
-    "top" : 5
-  }
-}
-
 const Game = () => {
   const [pokemons, setPokemons] = useState({});
 
   const firebase = useContext(FireBaseContext);
   const pokemonContext = useContext(PokemonContext);
-
+  
   const match = useRouteMatch();
   const history = useHistory();
   const handleStartGame = () => {
@@ -48,36 +24,23 @@ const Game = () => {
     })
   }, [])
 
-  const handleAddCard = () => {
-    const data = DATA;
-    firebase.addPokemon(data)
-  }
-  
-  const addPokemonContext = (val) => {
-    pokemonContext.pokemon.push(val);
-    console.log(pokemonContext)
-  }
+  const handleClickCard = (key) => {
+    const pokemon = {...pokemons[key]};
+    pokemonContext.onSelectedPokemon(key, pokemon);
 
-  const handleClickCard = (id) => {
-    setPokemons(prevState => {
-      return Object.entries(prevState).reduce((acc, item) => {
-        const pokemon = {...item[1]};
-        if (pokemon.id === id && !pokemon.isSelected) {
-          pokemon.isSelected = true;
-          addPokemonContext(item);
-        };
-        // firebase.postPokemon(item[0], pokemon);
-        acc[item[0]] = pokemon; 
-        return acc;
-      }, {});
-    });
+    setPokemons(prevState => ({
+      ...prevState,
+      [key]: {
+        ...prevState[key],
+        selected: !prevState[key].selected,
+      }
+    }));
   }
 
   return (
     <>
-      <button onClick={handleAddCard}>Add pokemon!</button>
       <div className={s.flex}>
-        {Object.entries(pokemons).map(([key, {name, id, type, values, img, isActive, isSelected, minimize, className}]) => 
+        {Object.entries(pokemons).map(([key, {name, id, type, values, img, selected,}]) => 
             <PokemonCard
                 key={key} 
                 name={name} 
@@ -85,14 +48,23 @@ const Game = () => {
                 type={type}
                 values={values}
                 img={img}
-                handleClickCard={handleClickCard}
                 isActive={true}
-                isSelected={isSelected}
-                className={className}
+                isSelected={selected}
+                className={s.card}
+                handleClickCard={() => {
+                  if (Object.keys(pokemonContext.pokemons).length < 5 || selected) {
+                    handleClickCard(key)
+                  }
+                 }}
             />
         )}
       </div>
-      <button onClick={handleStartGame}>Start Game!</button>
+      <button 
+        onClick={handleStartGame}
+        disabled={Object.keys(pokemonContext.pokemons).length < 5}
+      >
+        Start Game!
+      </button>
 
     </>
   )

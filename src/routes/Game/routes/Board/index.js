@@ -6,14 +6,13 @@ import {PokemonContext} from '../../../../context/pokemonContext'
 import s from './style.module.css';
 
 const BoardPage = () => {
-    const SelectedPokemon = useContext(PokemonContext);
-    console.log(SelectedPokemon)
+    const { pokemons } = useContext(PokemonContext);
     return (
         <div className={s.root}>
             <div className={s.playerOne}>
-                {SelectedPokemon.pokemon.map(([key, {name, id, type, values, img}]) => 
+                {Object.values(pokemons).map(({name, id, type, values, img}) => 
                     <PokemonCard
-                        key={key} 
+                        key={id} 
                         name={name} 
                         id={id} 
                         type={type}

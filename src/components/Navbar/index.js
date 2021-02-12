@@ -5,7 +5,7 @@ import s from './style.module.css'
 
 import logo from '../../assets/logo'
 
-const Navbar = ({handleOpen, isOpen, bgActive = false}) => {
+const Navbar = ({handleOpen, isOpen, bgActive}) => {
     return (
         <nav id={s.navbar} className={cn({[s.bgActive]: bgActive})}>
             <div className={cn(s.navWrapper)}>
@@ -13,10 +13,6 @@ const Navbar = ({handleOpen, isOpen, bgActive = false}) => {
                     <Link to={'/'} onClick={!handleOpen}>
                         <img width="50" src={logo} alt="logo"/>
                     </Link>
-                    {/* <Link to={'/'} onClick={!handleOpen}>
-                        <h2>PokemonGame</h2>
-                    </Link> */}
-                    
                 </div>
                 <span onClick={handleOpen} className={cn(s.menuButton, {[s.active]: isOpen})}>
                     <span />
