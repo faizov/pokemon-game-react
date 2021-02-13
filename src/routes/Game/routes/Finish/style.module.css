@@ -1,0 +1,19 @@
+.playerOne {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.playerTwo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  height: 350px;
+  cursor: pointer;
+}
