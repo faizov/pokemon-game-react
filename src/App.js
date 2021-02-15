@@ -1,5 +1,5 @@
 import {
-  useRouteMatch,
+  useLocation,
   Switch,
   Route,
   Redirect,
@@ -21,7 +21,8 @@ import Firebase from './service/firebase';
 import {FireBaseContext} from './context/firebaseContext'
 
 const App = () => {
-  const math = useRouteMatch('/');
+  const location = useLocation();
+  const isPadding = location.pathname === '/' || location.pathname === '/game/board'
 
   return (
     <FireBaseContext.Provider value={new Firebase()}>
@@ -29,8 +30,8 @@ const App = () => {
         <Route path="/404" component={NotFound} />
         <Route>
           <>
-            <MenuHeader bgActive={!math.isExact}/>
-            <div className={cn(s.wrap, {[s.isHomePage]: math.isExact})}>
+            <MenuHeader bgActive={!isPadding}/>
+            <div className={cn(s.wrap, {[s.isHomePage]: isPadding})}>
               <Switch>
                 <Route path="/" exact component={HomePage}/>
                 <Route path="/game" component={GamePage}/>

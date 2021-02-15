@@ -1,0 +1,15 @@
+.card {
+    max-height: 14.8vw;
+    margin-top: -6vw;
+    height: 300px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.card:first-child {
+    margin-top: 0;
+}
+
+.card.selected {
+    margin-left: 20%;
+}
